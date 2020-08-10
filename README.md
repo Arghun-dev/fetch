@@ -43,4 +43,16 @@ const FetchData = () => {
 export default FetchData;
 ```
 
-The class based component is exactly just like this, but you have to fetch data inside `componentDidmount` life cycle method in class components
+The class based component is exactly just like this, but you have to fetch data inside `componentDidmount` life cycle method in class components.
+
+**ALways remember when you send `POST` method of `fetch` request, you have to assign the `headers` as well, even if you don't send headers to the server**
+
+example:
+
+```js
+const body = JSON.stringify({ userName })
+const headers = { 'Content-Type': 'application/json' }
+fetch(API, { method: 'POST', body, headers })
+.then(res => console.log(res))
+.catch(err => console.log(err))
+```
