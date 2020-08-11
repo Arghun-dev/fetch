@@ -56,3 +56,25 @@ fetch(API, { method: 'POST', body, headers })
 .then(res => console.log(res))
 .catch(err => console.log(err))
 ```
+
+Example: 
+
+```js
+const body = JSON.stringify({ userNameOrEmail })
+    const headers = { 'Content-Type': 'application/json' }
+    fetch(API.FORGOT_PASSWORD, { method: 'POST', body, headers }).then(
+      (res) => {
+        if (res.status === 500) {
+          EventDispatch({
+            type: ERROR,
+            message: 'کاربر با این مشخصات یافت نشد'
+          })
+        } else if (res.status === 200) {
+          loginDispatch({
+            type: CODE,
+            userNameOrEmail
+          })
+        }
+      }
+    )
+```
